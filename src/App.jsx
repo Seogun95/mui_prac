@@ -1,12 +1,7 @@
-import { Test } from './pages/Test';
+import { Basic } from './pages/Basic';
 
 function App() {
-  return (
-    <>
-      <h1>Hello, world</h1>
-      <Test />
-    </>
-  );
+  return <Basic />;
 }
 
 export default App;
