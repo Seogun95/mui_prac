@@ -9,8 +9,10 @@ import { MuiButtonContainer } from './MuiButtonContainer';
 import { MuiButtonVariant } from './MuiButtonVariant';
 
 export const MuiButton = () => {
-  const [btnValue, setBtnValue] = useState();
-  const onClickHandler = e => setBtnValue(e.target.innerText);
+  const [btnValue, setBtnValue] = useState(false);
+  const onClickHandler = () => {
+    setBtnValue(prev => !prev);
+  };
 
   return (
     <>
@@ -65,6 +67,46 @@ export const MuiButton = () => {
         </Button>
         <Button variant="contained" disableRipple>
           Disable Ripple
+        </Button>
+      </MuiButtonContainer>
+
+      {/* 커스텀 버튼 */}
+      <MuiButtonContainer text={'Custom Button'}>
+        <Button
+          sx={{
+            p: 2,
+            border: 5,
+            borderColor: 'error.light',
+          }}
+          variant="contained"
+        >
+          Button
+        </Button>
+
+        {/* 배열을 통한 조건부 스타일링 및 반응형 */}
+        <Button
+          onClick={onClickHandler}
+          sx={[
+            {
+              width: {
+                xs: 100, // theme.breakpoints.up('xs')
+                sm: 200, // theme.breakpoints.up('sm')
+                md: 300, // theme.breakpoints.up('md')
+                lg: 400, // theme.breakpoints.up('lg')
+                xl: 500, // theme.breakpoints.up('xl')
+              },
+              borderColor: 'error.light',
+              p: 1,
+            },
+            btnValue && {
+              height: '30px',
+              bgcolor: 'error.main',
+              color: 'white',
+            },
+          ]}
+          variant="outlined"
+        >
+          Button2
         </Button>
       </MuiButtonContainer>
 

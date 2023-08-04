@@ -20,7 +20,8 @@ export function MuiButtonContainer({ text, children }) {
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
         padding={2}
-        direction="row"
+        direction={'row'}
+        alignItems="center"
       >
         {children}
       </Stack>
