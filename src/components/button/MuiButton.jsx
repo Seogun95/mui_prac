@@ -1,10 +1,26 @@
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import SendIcon from '@mui/icons-material/Send';
+import {
+  Typography,
+  Button,
+  Divider,
+  ButtonGroup,
+  ToggleButton,
+  ToggleButtonGroup,
+} from '@mui/material';
+import {
+  Send,
+  Email,
+  FormatBold,
+  FormatItalic,
+  FormatUnderlined,
+  FormatColorFill,
+  ArrowDropDown,
+  FormatAlignLeft,
+  FormatAlignCenter,
+  FormatAlignRight,
+  FormatAlignJustify,
+} from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
-import EmailIcon from '@mui/icons-material/Email';
 import { MuiButtonContainer } from './MuiButtonContainer';
 import { MuiButtonVariant } from './MuiButtonVariant';
 
@@ -13,6 +29,15 @@ export const MuiButton = () => {
   const onClickHandler = () => {
     setBtnValue(prev => !prev);
   };
+
+  const [multipleFormats, setmultipleFormats] = useState(['bold']);
+  const [singleFormats, setSingleFormats] = useState('left');
+
+  const handleMultipleFormatChanges = (_e, updatedFormats) =>
+    setmultipleFormats(updatedFormats);
+
+  const handleSingleFormatChanges = (_e, updatedFormats) =>
+    setSingleFormats(updatedFormats);
 
   return (
     <>
@@ -43,17 +68,17 @@ export const MuiButton = () => {
       </MuiButtonContainer>
 
       <MuiButtonContainer text={'Icon Button'}>
-        <Button variant="contained" endIcon={<SendIcon />}>
+        <Button variant="contained" endIcon={<Send />}>
           Send
         </Button>
-        <Button variant="contained" startIcon={<SendIcon />}>
+        <Button variant="contained" startIcon={<Send />}>
           Send
         </Button>
         <IconButton aria-label="전송" color="primary">
-          <SendIcon />
+          <Send />
         </IconButton>
         <IconButton aria-label="이메일" size="large">
-          <EmailIcon />
+          <Email />
         </IconButton>
       </MuiButtonContainer>
 
@@ -108,6 +133,78 @@ export const MuiButton = () => {
         >
           Button2
         </Button>
+      </MuiButtonContainer>
+
+      {/* 버튼 그룹 */}
+      <MuiButtonContainer text={'Button Group 1'}>
+        <ButtonGroup variant="contained">
+          <Button>Left</Button>
+          <Button>Middle</Button>
+          <Button>Right</Button>
+        </ButtonGroup>
+      </MuiButtonContainer>
+
+      <MuiButtonContainer text={'Button Group 2'}>
+        <ButtonGroup
+          variant="outlined"
+          orientation="vertical"
+          size="large"
+          color="secondary"
+          aria-label="alignment button group"
+        >
+          <Button>Left</Button>
+          <Button>Middle</Button>
+          <Button>Right</Button>
+        </ButtonGroup>
+      </MuiButtonContainer>
+
+      {/* 토글 버튼 */}
+      <MuiButtonContainer text={'Multiple Toggle Button'}>
+        <ToggleButtonGroup
+          aria-label="Multiple toggle button group"
+          value={multipleFormats}
+          onChange={handleMultipleFormatChanges}
+        >
+          <ToggleButton value="bold" aria-label="bold">
+            <FormatBold />
+          </ToggleButton>
+          <ToggleButton value="italic" aria-label="italic">
+            <FormatItalic />
+          </ToggleButton>
+          <ToggleButton value="underlined" aria-label="underlined">
+            <FormatUnderlined />
+          </ToggleButton>
+          <ToggleButton value="color" aria-label="color" disabled>
+            <FormatColorFill />
+            <ArrowDropDown />
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </MuiButtonContainer>
+
+      {/* exclusive는 다중 선택이 되지 않게 하는 옵션이다 */}
+      <MuiButtonContainer text={'Single Toggle Button'}>
+        <ToggleButtonGroup
+          aria-label="single toggle button group"
+          exclusive
+          value={singleFormats}
+          onChange={handleSingleFormatChanges}
+          size="small"
+          color="primary"
+          orientation="vertical"
+        >
+          <ToggleButton value="left" aria-label="left aligned">
+            <FormatAlignLeft />
+          </ToggleButton>
+          <ToggleButton value="center" aria-label="centered">
+            <FormatAlignCenter />
+          </ToggleButton>
+          <ToggleButton value="right" aria-label="right aligned">
+            <FormatAlignRight />
+          </ToggleButton>
+          <ToggleButton value="justify" aria-label="justified">
+            <FormatAlignJustify />
+          </ToggleButton>
+        </ToggleButtonGroup>
       </MuiButtonContainer>
 
       <Typography variant="caption">{btnValue}</Typography>
