@@ -42,7 +42,9 @@ export const MuiButton = () => {
   return (
     <>
       <Divider sx={{ marginY: '2rem' }} />
-
+      <Typography variant="h2" fontWeight="bold" margin={2}>
+        Button
+      </Typography>
       <MuiButtonContainer text={'Basic Button'}>
         <MuiButtonVariant variant={'contained'} />
       </MuiButtonContainer>
