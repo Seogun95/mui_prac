@@ -114,7 +114,7 @@ export const MuiTextField = () => {
         />
 
         <FormControl fullWidth>
-          <InputLabel htmlFor="input-with-icon-adornment" textAlign="left">
+          <InputLabel htmlFor="input-with-icon-adornment">
             With a start adornment
           </InputLabel>
           <Input
