@@ -3,3 +3,4 @@ export * from './MuiTypography';
 export * from './MuiTextField';
 export * from './MuiSelect';
 export * from './MuiRadioButton';
+export * from './MuiCheckBox';

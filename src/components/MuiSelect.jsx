@@ -19,8 +19,6 @@ export const MuiSelect = () => {
     setCountry(e.target.value);
   };
 
-  console.log(countries);
-
   const handleChangeCountries = e => {
     const v = e.target.value;
     setCountries(typeof v === 'string' ? v.split(',') : v);
